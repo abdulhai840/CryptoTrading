@@ -1,0 +1,182 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  line-height: 1.5;
+  color: #666;
+}
+
+.app {
+  margin: 50px auto;
+}
+.Font1vh{
+  font-size: 1vh;
+}
+textarea, input{
+  outline: none;
+}
+.Padding30{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+a.active{
+  background-color: #07BEDB;
+  opacity: 1;
+}
+
+a.active button{
+  background-image: linear-gradient(to Right, #00DDC6, #00AEE1);
+}
+
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+}
+
+.box {
+  /* background-color: #eee; */
+  /* border: 1px solid #e2e2e2; */
+  /* padding: 20px;
+  border-radius: 10px; */
+  margin-bottom: 20px;
+}
+
+.header {
+  height: 100px;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  border-bottom: 1px solid #eee;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+.nav a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 15px;
+  color: #666;
+  padding: 10px 15px;
+}
+
+.section-list {
+  padding-bottom: 10px;
+}
+
+.section-list__header {
+  background-color: #30c39e;
+  color: #fff;
+  padding: 20px 15px;
+}
+
+.section-list:nth-child(2n + 1) .section-list__header {
+  background-color: #f48924;
+}
+
+.Grey {
+  background-color: #EBEBEB;
+}
+.LightRed{
+  background-color: #F0F0F0;
+}
+.LightGrey{
+  background-color: #F2F2F2 !important;
+}
+.DarkGrey{
+  background-color: #AFAFAF;
+}
+.Green {
+    color: #00B238;
+}
+.BgWhite{
+  background-color: white;
+}
+.center::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  text-align: center;
+  opacity: 1; /* Firefox */
+}
+.image {
+    height: auto;
+    width: 25%;
+}
+
+.Purple {
+    color: #00DDC6;
+}
+
+.Radius18 {
+    border-radius: 18px;
+}
+
+.Radius26 {
+    border-radius: 26px;
+}
+.RadiusTop26{
+  border-top-left-radius: 26px;
+  border-top-right-radius: 26px;
+}
+.RadiusBottom26{
+  border-bottom-left-radius: 26px;
+  border-bottom-right-radius: 26px;
+}
+
+.Radius50 {
+    border-radius: 50px;
+}
+
+@media screen and (max-width: 480px) {
+  /* Screen Less than 480 */
+  .Latest_News{
+    display: none ;
+  }
+}
+@media screen and (max-width: 1200px) {
+  /* Screen smaller than 1200 */
+  .Sponsored{
+    display: none;
+  }
+}
+.gradient{
+  background-image: linear-gradient(to right, rgb(0, 174, 225, 0.5), rgb(0, 221, 198, 0.5));
+}
+.White{
+  color: #FFFFFF !important;
+}
+.Font20{
+  font-size: 20px !important;
+}
+.combineButton {
+  border-radius   : 50px;
+  background-color: rgb(240, 242, 245);
+}
+.RadioToButton {
+  list-style-type: none;
+}
+
+.RadioToButton input {
+  display: none;
+}
+
+.RadioToButton label {
+  border       : none;
+  border-radius: 50px;
+  width        : 100%;
+}
+
+.RadioToButton input:checked+label,
+.Checked+label {
+  background-image: linear-gradient(to Right, #00DDC6, #00AEE1);
+  color     : white;
+}
+.textArea{
+  resize: none;
+}
