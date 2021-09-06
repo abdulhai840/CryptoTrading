@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
+// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter,
   Switch,
@@ -12,6 +14,7 @@ import Sidebar from "./Dashboard/Dashboard";
 import Setting from "./UserSetting/Setting";
 import Profile from "./UserSetting/Profile";
 import Security from "./UserSetting/Security";
+import Social from "./UserSetting/Social";
 
 // eslint-disable-next-line
 function NavLink({ children, to, activeOnlyWhenExact }) {
@@ -51,8 +54,8 @@ export default class App extends Component {
             <Route path="/profile" exact>
               <Profile />
             </Route>
-            <Route path="/dash" exact>
-              <Setting />
+            <Route path="/social" exact>
+              <Social />
             </Route>
           </Switch>
         </div>

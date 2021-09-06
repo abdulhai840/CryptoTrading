@@ -1,16 +1,28 @@
 import React, { useState } from "react";
 import Setting from './Setting'
+import twitter from '../assets/twitter.png'
+import edit from '../assets/edit.png'
+import instagram from '../assets/instagram.png'
+import facebook from '../assets/facebook.png'
+import youtube from '../assets/youtube.png'
+import trading from '../assets/youtube.png'
+import linkedin from '../assets/linkedin.png'
+import telegram from '../assets/telegram.png'
+
 const Social = () => {
     const initialstate = {
-        profLogo: [],
-        Color: "",
-        password: "",
-        email: ""
+        Twitter: "",
+        Facebook: "",
+        Trading: "",
+        Telegram: "",
+        Instagram: "",
+        Youtube: "",
+        Linkedin: ""
     }
 
     const [DetailData, setDetailData] = useState(initialstate);
     // eslint-disable-next-line
-    const { profLogo, password, email, Color } = DetailData;
+    const { Twitter, Facebook, Trading, Telegram, Instagram, Youtube, Linkedin } = DetailData;
 
     const onHandleChange = (event) => {
         const { name, value } = event.target
@@ -54,78 +66,169 @@ const Social = () => {
                     </div>
                     <div className="col-lg-8 col-md-6 col-12">
                         <div className="Grey Radius26 p-4 mt-4  " >
-                            <h6 className="text-center p-3 Font20">Security</h6>
+                            <h6 className="text-center p-3 Font20">Social</h6>
                             <div className="BgWhite Padding30 Radius18">
                                 <div className="col-11 mx-auto">
-
                                     <div className="row">
-                                        <div className="col-12 col-sm-5 col-md-12 col-lg-5 mx-auto ">
-                                            <label>e-Mail Address:</label>
-                                            <div className="row LightGrey Radius26 mt-3">
-                                                <p className=" p-4 m-0 col-5 Font1vh">Change e-Mail:</p>
-                                                <input type="text"
-                                                    className="border-0 DarkGrey px-3 White Radius26 center col-7"
-                                                    placeholder="new e-Mail"
-                                                    name="email"
-                                                    value={email}
-                                                    onChange={onHandleChange}></input>
-                                            </div>
-                                        </div>
-                                        <div className="col-12 col-sm-5 col-md-12 col-lg-5 mx-auto">
-                                            <label>Password:</label>
-                                            <div className="row LightGrey Radius26 mt-3">
-                                                <p className=" p-4 m-0 col-5 Font1vh">Change Password:</p>
-                                                <input type="password"
-                                                    className="border-0 DarkGrey px-3 White Radius26 center col-7"
-                                                    placeholder="new password"
-                                                    name="password"
-                                                    value={password}
-                                                    onChange={onHandleChange}></input>
-                                            </div>
-                                            <div className="row Radius26 mt-4">
-                                                <input type="password"
-                                                    className="border-0 DarkGrey px-3 White Radius26 center col-7 ml-auto p-3"
-                                                    placeholder="confirm new password"
-                                                    name="password"
-                                                    value={password}
-                                                    onChange={onHandleChange}></input>
-                                            </div>
-                                        </div>
-
-                                        <div className="col-md-6 col-12">
-                                            <label className="pl-5">2 FA:</label>
-                                            <div className="row my-3 col-12 mx-auto">
-                                                <div className="my-auto px-0 col-lg-12 col-md-12 col-12 Radius26 Font14">
-                                                    <ul class="w-100 combineButton RadioToButton d-inline-flex px-0 my-1">
-                                                        <li className="w-50">
-                                                            <input
-                                                                type="radio"
-                                                                className="gradient"
-                                                                id="Disabled"
-                                                                name="Color"
-                                                                value="Disabled"
-                                                                onClick={handleChange} />
-                                                            <label for="Disabled" className="py-1 mb-0 Bold text-center p-3">Disabled</label>
-                                                        </li>
-                                                        <li className="w-50">
-                                                            <input
-                                                                className="gradient"
-                                                                type="radio"
-                                                                id="Enabled"
-                                                                name="Color"
-                                                                value="Enabled"
-                                                                onClick={handleChange} />
-                                                            <label for="Enabled" className="py-1 mb-0 Bold text-center p-3">Enabled</label>
-                                                        </li>
-                                                    </ul>
+                                        <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto">
+                                            <div className="row">
+                                                <div className="col-12 col-sm-3 col-md-12 col-lg-3 mx-auto">
+                                                    <label className="my-auto">
+                                                        <input type="checkbox" onChange={handleChange} />
+                                                        <span className="py-auto">Twitter</span>
+                                                    </label>
+                                                </div>
+                                                <div className=" col-12 col-sm-9 col-md-12 col-lg-9 mx-auto">
+                                                    <div className="d-inline-flex LightRed Radius26">
+                                                        <span class=""> <img src={twitter} alt="" className="w-75 "></img></span>
+                                                        <input className="LightRed border-0" placeholder="Enter Username or Paste Link "
+                                                            name="Twitter" value={Twitter} onChange={onHandleChange}></input>
+                                                        <button className="btn"> <span class=""><img src={edit} alt="" className=""></img></span> </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto">
+                                            <div className="row">
+                                                <div className="col-12 col-sm-3 col-md-12 col-lg-3 mx-auto">
+                                                    <label className="my-auto">
+                                                        <input type="checkbox" onChange={handleChange} />
+                                                        <span className="py-auto">Instagram</span>
+                                                    </label>
+                                                </div>
+                                                <div className="col-12 col-sm-9 col-md-12 col-lg-9 mx-auto ">
+                                                    <div className="d-inline-flex LightRed Radius26">
+                                                        <span class=""> <img src={instagram} alt="" className="w-75 "></img></span>
+                                                        <input className="LightRed border-0" placeholder="Enter Username or Paste Link "
+                                                            name="Instagram" value={Instagram} onChange={onHandleChange}></input>
+                                                        <button className="btn"> <span class=""><img src={edit} alt="" className=""></img></span> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <div className="row mt-4">
+                                        <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto">
+                                            <div className="row">
+                                                <div className="col-12 col-sm-3 col-md-12 col-lg-3 mx-auto">
+                                                    <label className="my-auto">
+                                                        <input type="checkbox" onChange={handleChange} />
+                                                        <span className="py-auto">Facebook</span>
+                                                    </label>
+                                                </div>
+                                                <div className="col-12 col-sm-9 col-md-12 col-lg-9 mx-auto">
+                                                    <div className="d-inline-flex LightRed Radius26">
+                                                        <span class=""> <img src={facebook} alt="" className="w-75 "></img></span>
+                                                        <input className="LightRed border-0" placeholder="Enter Username or Paste Link "
+                                                            name="Facebook" value={Facebook} onChange={onHandleChange}></input>
+                                                        <button className="btn"> <span class=""><img src={edit} alt="" className=""></img></span> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto">
+                                            <div className="row">
+                                                <div className="col-12 col-sm-3 col-md-12 col-lg-3 mx-auto">
+                                                    <label className="my-auto">
+                                                        <input type="checkbox" onChange={handleChange} />
+                                                        <span className="py-auto">Youtube</span>
+                                                    </label>
+                                                </div>
+                                                <div className="col-12 col-sm-9 col-md-12 col-lg-9 mx-auto ">
+                                                    <div className="d-inline-flex LightRed Radius26">
+                                                        <span class=""> <img src={youtube} alt="" className="w-75 "></img></span>
+                                                        <input className="LightRed border-0" placeholder="Enter Username or Paste Link "
+                                                            name="Youtube" value={Youtube} onChange={onHandleChange}></input>
+                                                        <button className="btn"> <span class=""><img src={edit} alt="" className=""></img></span> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="row mt-4">
+                                        <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto">
+                                            <div className="row">
+                                                <div className="col-12 col-sm-3 col-md-12 col-lg-3 mx-auto">
+                                                    <label className="my-auto">
+                                                        <input type="checkbox" onChange={handleChange} />
+                                                        <span className="py-auto">TradingView</span>
+                                                    </label>
+                                                </div>
+                                                <div className="col-12 col-sm-9 col-md-12 col-lg-9 mx-auto">
+                                                    <div className="d-inline-flex LightRed Radius26">
+                                                        <span class=""> <img src={trading} alt="" className="w-75 "></img></span>
+                                                        <input className="LightRed border-0" placeholder="Enter Username or Paste Link "
+                                                            name="Trading" value={Trading} onChange={onHandleChange}></input>
+                                                        <button className="btn"> <span class=""><img src={edit} alt="" className=""></img></span> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto">
+                                            <div className="row">
+                                                <div className="col-12 col-sm-3 col-md-12 col-lg-3 mx-auto">
+                                                    <label className="my-auto">
+                                                        <input type="checkbox" onChange={handleChange} />
+                                                        <span className="py-auto">LinkedIn</span>
+                                                    </label>
+                                                </div>
+                                                <div className="col-12 col-sm-9 col-md-12 col-lg-9 mx-auto ">
+                                                    <div className="d-inline-flex LightRed Radius26">
+                                                        <span class=""> <img src={linkedin} alt="" className="w-75 "></img></span>
+                                                        <input className="LightRed border-0" placeholder="Enter Username or Paste Link "
+                                                            name="Linkedin" value={Linkedin} onChange={onHandleChange}></input>
+                                                        <button className="btn"> <span class=""><img src={edit} alt="" className=""></img></span> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="row mt-4">
+                                        <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto">
+                                            <div className="row">
+                                                <div className="col-12 col-sm-3 col-md-12 col-lg-3 mx-auto">
+                                                    <label className="my-auto">
+                                                        <input type="checkbox" onChange={handleChange} />
+                                                        <span className="py-auto">Telegram</span>
+                                                    </label>
+                                                </div>
+                                                <div className="col-12 col-sm-9 col-md-12 col-lg-9 mx-auto">
+                                                    <div className="d-inline-flex LightRed Radius26">
+                                                        <span class=""> <img src={telegram} alt="" className="w-75 "></img></span>
+                                                        <input className="LightRed border-0" placeholder="Enter Username or Paste Link "
+                                                            name="Telegram" value={Telegram} onChange={onHandleChange}></input>
+                                                        <button className="btn"> <span class=""><img src={edit} alt="" className=""></img></span> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto">
+                                            <div className="row">
+                                                <div className="col-12 col-sm-3 col-md-12 col-lg-3 mx-auto">
+                                                    <label className="my-auto">
+                                                        {/* <input type="checkbox" onChange={handleChange} /> */}
+                                                        +
+                                                        <span className="py-auto">Add More</span>
+                                                    </label>
+                                                </div>
+                                                <div className="col-12 col-sm-9 col-md-12 col-lg-9 mx-auto ">
+                                                    <div className="d-inline-flex LightRed Radius26">
+                                                        <span class=""> <img src={youtube} alt="" className="w-75 "></img></span>
+                                                        <input className="LightRed border-0" placeholder="Paste Link "
+                                                            name="Youtube" value={Youtube} onChange={onHandleChange}></input>
+                                                        <button className="btn"> <span class=""><img src={edit} alt="" className=""></img></span> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div className="d-block mx-auto pt-5">
                                         <button className="col-xl-2 d-block mx-auto border-0 gradient White p-3 Radius18">
-                                            SAVE
+                                            CONNECT SELLECTED
                                         </button>
                                     </div>
                                 </div>
