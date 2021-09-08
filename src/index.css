@@ -61,7 +61,7 @@ img.social{
 .Font1vh{
   font-size: 1vh;
 }
-textarea, input{
+textarea, input, select{
   outline: none;
 }
 .Padding30{

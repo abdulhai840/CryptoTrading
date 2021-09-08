@@ -15,6 +15,7 @@ import Setting from "./UserSetting/Setting";
 import Profile from "./UserSetting/Profile";
 import Security from "./UserSetting/Security";
 import Social from "./UserSetting/Social";
+import Exchange from "./UserSetting/Exchange";
 
 // eslint-disable-next-line
 function NavLink({ children, to, activeOnlyWhenExact }) {
@@ -56,6 +57,9 @@ export default class App extends Component {
             </Route>
             <Route path="/social" exact>
               <Social />
+            </Route>
+            <Route path="/exchange" exact>
+              <Exchange />
             </Route>
           </Switch>
         </div>

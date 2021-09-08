@@ -25,7 +25,7 @@ export default class Setting extends Component {
                             </button>
                         </NavLink>
 
-                        <NavLink className="d-block pl-3" to="/dash">
+                        <NavLink className="d-block pl-3" to="/exchange">
                             <button className="col-12 p-2 btn border-0 White Font20">
                                 Connect an Exchange
                             </button>

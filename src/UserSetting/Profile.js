@@ -101,7 +101,7 @@ const Profile = () => {
 
                                                 <div className="my-auto px-0 col-lg-7 col-md-12 col-12 Radius26 Font14">
 
-                                                    <ul class="w-100 combineButton RadioToButton d-inline-flex px-0 my-1">
+                                                    <ul className="w-100 combineButton RadioToButton d-inline-flex px-0 my-1">
                                                         <li className="w-50">
                                                             <input
                                                                 type="radio"
