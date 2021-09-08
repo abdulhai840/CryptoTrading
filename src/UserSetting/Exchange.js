@@ -73,20 +73,6 @@ const Exchange = () => {
                                 <div className="col-11 mx-auto">
                                     <div className="row">
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6">
-                                            {/* <div className="d-lg-flex text-md-center text-lg-start text-sm-center">
-                                                <div className="me-auto ">
-                                                    <p>Choose your Exchange:</p>
-                                                </div>
-                                                <div className="ms-auto">
-                                                    <select name="cars" id="cars" className="p-3 Radius26 LightGrey border-0 w-100">
-                                                        <option value="">Choose Exchange</option>
-                                                        <option value="volvo">Volvo</option>
-                                                        <option value="saab">Saab</option>
-                                                        <option value="opel">Opel</option>
-                                                        <option value="audi">Audi</option>
-                                                    </select>
-                                                </div>
-                                            </div> */}
                                             <div className="col-12 col-md-12 col-lg-4 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
                                                 <label className="my-auto">
                                                     <span >Choose your Exchange:</span>
@@ -101,11 +87,8 @@ const Exchange = () => {
                                                     <option value="audi">Audi</option>
                                                 </select>
                                             </div>
-
-
                                         </div>
                                     </div>
-
 
                                     <div className="row">
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto my-2">
@@ -116,7 +99,6 @@ const Exchange = () => {
                                                     </label>
                                                 </div>
                                                 <div className=" col-12 col-md-12 col-lg-9 mx-auto text-center text-sm-start text-md-center text-lg-start">
-                                                    {/* <span className="text-center">API Key: </span> */}
                                                     <div className="d-inline-flex LightRed Radius26 p-3 mx-auto">
                                                         <input className="LightRed border-0" id="twitter" placeholder="Type or paste your API key"
                                                             name="Twitter" value={Twitter} onChange={onHandleChange}></input>
@@ -130,7 +112,6 @@ const Exchange = () => {
                                             <div className="row">
                                                 <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
                                                     <label className="my-auto">
-                                                        {/* <input type="checkbox" onChange={handleChange} /> */}
                                                         <span className="py-auto">API secret key: </span>
                                                     </label>
                                                 </div>
