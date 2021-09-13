@@ -104,7 +104,7 @@ const Security = () => {
                                                                 name="Color"
                                                                 value="Disabled"
                                                                 onClick={handleChange} />
-                                                            <label for="Disabled" className=" mb-0 Bold text-center p-3">Disabled</label>
+                                                            <label htmlFor="Disabled" className=" mb-0 Bold text-center p-3">Disabled</label>
                                                         </li>
                                                         <li className="w-50">
                                                             <input
@@ -114,7 +114,7 @@ const Security = () => {
                                                                 name="Color"
                                                                 value="Enabled"
                                                                 onClick={handleChange} />
-                                                            <label for="Enabled" className=" mb-0 Bold text-center p-3">Enabled</label>
+                                                            <label htmlFor="Enabled" className=" mb-0 Bold text-center p-3">Enabled</label>
                                                         </li>
                                                     </ul>
                                                 </div>

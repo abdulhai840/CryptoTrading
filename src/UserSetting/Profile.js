@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import UploadComponent from "./UploadComponent";
+import BasicInfo from './UploadComponent'
 import Setting from './Setting'
+import profile_photo_avatar from "../assets/dp1.png"
+
 const Profile = () => {
     const initialstate = {
-        profLogo: [],
+        profile_photo: profile_photo_avatar,
         Color: "",
         userName: "",
         bio: ""
@@ -11,7 +13,7 @@ const Profile = () => {
 
     const [DetailData, setDetailData] = useState(initialstate);
     // eslint-disable-next-line
-    const { profLogo, userName, Color, bio } = DetailData;
+    const { profile_photo, userName, Color, bio } = DetailData;
 
     const onHandleChange = (event) => {
         const { name, value } = event.target
@@ -46,12 +48,6 @@ const Profile = () => {
         }
 
     }
-    const imagesSet = (imageArray) => {
-        setDetailData({
-            ...DetailData,
-            profLogo: imageArray[0].originFileObj
-        })
-    }
 
     return (
         <div>
@@ -68,15 +64,17 @@ const Profile = () => {
                                     <div className="row">
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto">
                                             <p>Profile Picture:</p>
-                                            <div className="row my-3">
+                                            <BasicInfo profile_photo={profile_photo} />
+                                            {/* <div className="row my-3">
                                                 <div className="col-3">
-                                                    <UploadComponent limit={1} imagesSet={imagesSet} className="" />
+                                                   
+                                                <BasicInfo profile_photo={profile_photo} />
                                                 </div>
 
                                                 <div className="my-auto mx-0 LightGrey col-6 Radius26 Font14">
-                                                    <button className=" btn p-3 text-center col-12">UPLOAD NEW PHOTO</button>
+                                                <BasicInfo profile_photo={profile_photo} />
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                         <div className="col-12 col-sm-5 col-md-12 col-lg-5 mx-auto">
                                             <p>Username: <span className="Purple">Your Username</span></p>
@@ -110,7 +108,7 @@ const Profile = () => {
                                                                 name="Color"
                                                                 value="Dark"
                                                                 onClick={handleChange} />
-                                                            <label for="Dark" className="py-1 mb-0 Bold text-center p-3">Dark</label>
+                                                            <label htmlFor="Dark" className="mb-0 Bold text-center p-3">Dark</label>
                                                         </li>
                                                         <li className="w-50">
                                                             <input
@@ -120,14 +118,13 @@ const Profile = () => {
                                                                 name="Color"
                                                                 value="Light"
                                                                 onClick={handleChange} />
-                                                            <label for="Light" className="py-1 mb-0 Bold text-center p-3">Light</label>
+                                                            <label htmlFor="Light" className=" mb-0 Bold text-center p-3">Light</label>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
 
                                     <div>
                                         <label>Bio:</label>

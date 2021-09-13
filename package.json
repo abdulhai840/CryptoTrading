@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "antd": "^4.16.13",
-    "bootstrap": "^5.1.0",
+    "bootstrap": "^5.0.2",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "prop-types": "^15.6.2",

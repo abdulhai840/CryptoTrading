@@ -56,7 +56,10 @@ input[type="checkbox"]:focus + span::before {
   outline: 0;
 }
 img.social{
-  width:15%
+  width:15%;
+}
+img.images{
+  vertical-align: -webkit-baseline-middle !important;
 }
 .Font1vh{
   font-size: 1vh;
@@ -180,6 +183,14 @@ img {
 
 .Radius50 {
     border-radius: 50px;
+}
+.ant-upload-list-item{
+    display: none !important;
+}
+.ant-upload.ant-upload-select.ant-upload-select-picture{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
 }
 
 @media screen and (max-width: 480px) {
