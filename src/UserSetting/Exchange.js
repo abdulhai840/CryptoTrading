@@ -3,31 +3,17 @@ import $ from 'jquery';
 import Setting from './Setting'
 import edit from '../assets/edit.png'
 import eye from '../assets/eye.png'
-// import { useForm } from "react-hook-form";
 
 const Exchange = () => {
     const initialstate = {
-        Twitter: "",
-        Facebook: "",
-        Trading: "",
-        Telegram: "",
-        Instagram: "",
-        Youtube: "",
-        Linkedin: "",
-        newLink: "",
-        Links: []
+        Type: "",
+        API: "",
+        Secret: "",
+        services: []
     }
 
     const [DetailData, setDetailData] = useState(initialstate);
-    // eslint-disable-next-line
-    const { Twitter, Instagram } = DetailData;
-
-    const [passwordShown, setPasswordShown] = useState(false);
-    const togglePasswordVisiblity = () => {
-        setPasswordShown(passwordShown ? false : true);
-    };
-
-    // const { register, handleSubmit } = useForm();
+    const { Type, API, Secret, services } = DetailData;
 
     const onHandleChange = (event) => {
         const { name, value } = event.target
@@ -36,6 +22,11 @@ const Exchange = () => {
             [name]: value
         })
     }
+
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
 
     const editLink = (e) => {
         console.log(e)
@@ -49,15 +40,153 @@ const Exchange = () => {
         $(e).prop("disabled", true);
     }
     useEffect(() => {
-        $("#twitter").prop("disabled", true);
-        $("#instagram").prop("disabled", true);
-        $("#facebook").prop("disabled", true);
-        $("#youtube").prop("disabled", true);
-        $("#trading").prop("disabled", true);
-        $("#linkedin").prop("disabled", true);
-        $("#telegram").prop("disabled", true);
-        $("#custom").prop("disabled", true);
+        $("#APIKey").prop("disabled", true);
+        $("#seretKey").prop("disabled", true);
     }, [])
+
+
+    const Service = () => {
+        if (Type !== "" && API !== "" && Secret !== "") {
+            const random = Math.floor(100000 + Math.random() * 900000);
+            const newService = {
+                serviceid: random,
+                Type: Type,
+                API: API,
+                Secret: Secret
+            }
+            services.push(newService)
+            setDetailData({
+                ...DetailData,
+                Type: "",
+                API: "",
+                Secret: ""
+            })
+        }
+    }
+
+    const onUpdateType = (event) => {
+        const id = event.target.id.replace("Type", "");
+        var array;
+        // eslint-disable-next-line
+        services.map((service, index) => {
+            // eslint-disable-next-line
+            if (service.serviceid == id) {
+                array = services;
+                array[index].Type = event.target.value
+                setDetailData({
+                    ...DetailData,
+                    services: array
+                })
+            }
+        })
+    }
+
+    const onUpdateAPI = (event) => {
+        const id1 = event.target.id.replace("API", "");
+        var array;
+        // eslint-disable-next-line
+        services.map((service, index) => {
+            // eslint-disable-next-line
+            if (service.serviceid == id1) {
+                array = services;
+                array[index].API = event.target.value
+                setDetailData({
+                    ...DetailData,
+                    services: array
+                })
+            }
+        })
+    }
+
+    const onUpdateSecret = (event) => {
+        const id1 = event.target.id.replace("Secret", "");
+        var array;
+        // eslint-disable-next-line
+        services.map((service, index) => {
+            // eslint-disable-next-line
+            if (service.serviceid == id1) {
+                array = services;
+                array[index].Secret = event.target.value
+                setDetailData({
+                    ...DetailData,
+                    services: array
+                })
+            }
+        })
+    }
+
+    const RenderMap = services.map((servicemap) => {
+        return (
+            <React.Fragment>
+                <div className="col-11 mx-auto">
+                    <div className="row">
+                        <div className="col-12 col-sm-6 col-md-12 col-lg-6">
+                            <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start">
+                                <p className="my-auto py-auto">Your Exchange:</p>
+                            </div>
+                            <div className="col-12 col-md-12 col-lg-9 Radius26 mx-auto text-center text-sm-start text-md-center text-lg-start">
+                                <select name="Type"
+                                    id={servicemap.serviceid + "Type"}
+                                    value={servicemap.Type}
+                                    onChange={onUpdateType}
+                                    className="col-12 col-md-10 col-lg-10 p-3 Radius26 LightGrey border-0">
+                                    <option value="">Choose Exchange</option>
+                                    <option value="volvo">Volvo</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="opel">Opel</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-12 col-sm-5 col-md-12 col-lg-5 mx-auto">
+                            <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start ">
+                                <p className="my-auto py-auto">API Key:</p>
+                            </div>
+                            <div className="col-12 col-md-12 col-lg-8 mx-auto Radius26 LightGrey text-center text-sm-start text-md-center text-lg-start">
+                                <input name="API"
+                                    id={servicemap.serviceid + "API"}
+                                    value={servicemap.API}
+                                    // eslint-disable-next-line
+                                    onChange={onUpdateAPI} id="APIKey"
+                                    placeholder="Type or paste your API key"
+                                    className="col-12 col-md-10 col-lg-10 p-3 Radius26 LightGrey border-0" />
+                                <i ><button className="btn" id="APIKeyPen" onClick={() => editLink("#APIKey")} > <span >MANAGE</span> </button></i>
+                                <i> <button className="btn d-none" id="APIKeyOk" onClick={() => cancelLink("#APIKey")} > <span >OK</span> </button></i>
+                            </div>
+                        </div>
+
+                        <div className="col-12 col-sm-5 col-md-12 col-lg-5 mx-auto">
+                            <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
+                                <p className="my-auto py-auto">API secret key: </p>
+                            </div>
+                            <div className="col-12 col-md-12 col-lg-7 mx-auto Radius26 LightGrey text-center text-sm-start text-md-center text-lg-start">
+                                <input name="Secret"
+                                    id={servicemap.serviceid + "Secret"}
+                                    value={servicemap.Secret}
+                                    // eslint-disable-next-line
+                                    onChange={onUpdateSecret} id="seretKey"
+                                    placeholder="*******"
+                                    type={passwordShown ? "text" : "password"}
+                                    className="col-12 col-md-10 col-lg-8 p-3 Radius26 LightGrey border-0" />
+                                <i ><button className="btn my-auto py-auto" id="seretKeyPen" onClick={() => editLink("#seretKey")} > <span ><img src={edit} alt="" ></img></span> </button></i>
+                                <i> <button className="btn d-none" id="seretKeyOk" onClick={() => cancelLink("#seretKey")} > <span >OK</span> </button></i>
+                            </div>
+                            <i onClick={togglePasswordVisiblity} className="my-auto py-auto"> <button className="btn" >{<img src={eye} alt=""></img>}</button></i>
+                        </div>
+                    </div>
+
+                    <div className="d-block mx-auto pt-5">
+                        <button className="col-xl-2 d-block mx-auto border-0 gradient White p-3 Radius18">
+                            Disconnect
+                        </button>
+                    </div>
+                </div>
+            </React.Fragment>
+        )
+    })
 
     return (
         <div>
@@ -73,13 +202,12 @@ const Exchange = () => {
                                 <div className="col-11 mx-auto">
                                     <div className="row">
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6">
-                                            <div className="col-12 col-md-12 col-lg-4 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
-                                                <label className="my-auto">
-                                                    <span >Choose your Exchange:</span>
-                                                </label>
+                                            <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start">
+                                                <p className="my-auto py-auto">Choose your Exchange:</p>
                                             </div>
-                                            <div className="col-12 col-md-12 col-lg-8 mx-auto  text-center text-sm-start text-md-center text-lg-start">
-                                                <select name="cars" id="cars" className="col-12 col-md-9 col-lg-8  p-3 Radius26 LightGrey border-0">
+                                            <div className="col-12 col-md-12 col-lg-9 Radius26 mx-auto text-center text-sm-start text-md-center text-lg-start">
+                                                <select name="Type" value={Type} onChange={onHandleChange}
+                                                    className="col-12 col-md-10 col-lg-10  p-3 Radius26 LightGrey border-0">
                                                     <option value="">Choose Exchange</option>
                                                     <option value="volvo">Volvo</option>
                                                     <option value="saab">Saab</option>
@@ -91,57 +219,56 @@ const Exchange = () => {
                                     </div>
 
                                     <div className="row">
-                                        <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto my-2">
-                                            <div className="row">
-                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
-                                                    <label className="my-auto">
-                                                        <span className="">API Key: </span>
-                                                    </label>
-                                                </div>
-                                                <div className=" col-12 col-md-12 col-lg-9 mx-auto text-center text-sm-start text-md-center text-lg-start">
-                                                    <div className="d-inline-flex LightRed Radius26 p-3 mx-auto">
-                                                        <input className="LightRed border-0" id="twitter" placeholder="Type or paste your API key"
-                                                            name="Twitter" value={Twitter} onChange={onHandleChange}></input>
-                                                        <button className="btn" id="twitterPen" onClick={() => editLink("#twitter")}> <span ><img src={edit} alt=""  ></img></span> </button>
-                                                        <button className="btn d-none" id="twitterOk" onClick={() => cancelLink("#twitter")} > <span >OK</span> </button>
-                                                    </div>
-                                                </div>
+                                        <div className="col-12 col-sm-5 col-md-12 col-lg-5 mx-auto">
+                                            <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start ">
+                                                <p className="my-auto py-auto">API Key:</p>
+                                            </div>
+                                            <div className="col-12 col-md-12 col-lg-8 mx-auto Radius26 LightGrey text-center text-sm-start text-md-center text-lg-start">
+                                                <input name="API" value={API} onChange={onHandleChange} id="APIKey"
+                                                    placeholder="Type or paste your API key"
+                                                    className="col-12 col-md-10 col-lg-10 p-3 Radius26 LightGrey border-0" />
+                                                <i ><button className="btn" id="APIKeyPen" onClick={() => editLink("#APIKey")} > <span ><img src={edit} alt="" ></img></span> </button></i>
+                                                <i> <button className="btn d-none" id="APIKeyOk" onClick={() => cancelLink("#APIKey")} > <span >OK</span> </button></i>
                                             </div>
                                         </div>
-                                        <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto my-2">
-                                            <div className="row">
-                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
-                                                    <label className="my-auto">
-                                                        <span className="py-auto">API secret key: </span>
-                                                    </label>
-                                                </div>
-                                                <div className="col-12 col-md-12 col-lg-9 mx-auto  text-center text-sm-start text-md-center text-lg-start">
-                                                    <div className="d-inline-flex LightRed Radius26 p-3 mx-auto">
-                                                        <input className="LightRed border-0" id="instagram"
-                                                            placeholder="**********"
-                                                            name="password"
-                                                            type={passwordShown ? "text" : "password"}
-                                                            ref={({ required: "This is required." })}></input>
 
-                                                        <button className="btn" id="instagramPen" onClick={() => editLink("#instagram")}> <span ><img src={edit} alt="" ></img></span> </button>
-                                                        <button className="btn d-none" id="instagramOk" onClick={() => cancelLink("#instagram")} > <span >OK</span> </button>
-                                                        <i onClick={togglePasswordVisiblity}>{<img src={eye} alt=""></img>}</i>
-                                                    </div>
-                                                </div>
+                                        <div className="col-12 col-sm-5 col-md-12 col-lg-5 mx-auto">
+                                            <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
+                                                <p className="my-auto py-auto">API secret key: </p>
                                             </div>
+                                            <div className="col-12 col-md-12 col-lg-7 mx-auto Radius26 LightGrey text-center text-sm-start text-md-center text-lg-start">
+                                                <input name="Secret" value={Secret} onChange={onHandleChange} id="seretKey"
+                                                    placeholder="*******"
+                                                    type={passwordShown ? "text" : "password"}
+                                                    className="col-12 col-md-10 col-lg-8 p-3 Radius26 LightGrey border-0" />
+                                                <i ><button className="btn my-auto py-auto" id="seretKeyPen" onClick={() => editLink("#seretKey")} > <span ><img src={edit} alt="" ></img></span> </button></i>
+                                                <i> <button className="btn d-none" id="seretKeyOk" onClick={() => cancelLink("#seretKey")} > <span >OK</span> </button></i>
+                                            </div>
+                                            <i onClick={togglePasswordVisiblity} className="my-auto py-auto"> <button className="btn" >{<img src={eye} alt=""></img>}</button></i>
                                         </div>
                                     </div>
+
                                     <div className="d-block mx-auto pt-5">
-                                        <button className="col-xl-2 d-block mx-auto border-0 gradient White p-3 Radius18">
+                                        <button className="col-xl-2 d-block mx-auto border-0 gradient White p-3 Radius18"
+                                            onClick={Service}>
                                             CONNECT
                                         </button>
                                     </div>
                                 </div>
+                                <div className="Grey Radius26 p-4 mt-4  " >
+                                    <h6 className="text-center p-3 Font20">API Management</h6>
+                                    <div className="BgWhite Padding30 Radius18">
+                                        {RenderMap}
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
-
                     </div>
+
+
+                    {/* <div className="col-lg-8 col-md-6 col-12"> */}
+
+                    {/* </div> */}
                 </div>
 
             </React.Fragment>
