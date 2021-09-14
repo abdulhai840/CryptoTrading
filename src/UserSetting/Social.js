@@ -311,9 +311,7 @@ const Social = () => {
                                             </div>
                                         </div>
                                     </div>
-
-
-
+                                    
                                     <div className="d-block mx-auto pt-5">
                                         <button className="col-xl-2 d-block mx-auto border-0 gradient White p-3 Radius18">
                                             CONNECT SELLECTED

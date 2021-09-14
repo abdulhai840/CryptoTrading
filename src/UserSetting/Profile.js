@@ -46,7 +46,6 @@ const Profile = () => {
                 [name]: value
             })
         }
-
     }
 
     return (
@@ -65,16 +64,6 @@ const Profile = () => {
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto">
                                             <p>Profile Picture:</p>
                                             <BasicInfo profile_photo={profile_photo} />
-                                            {/* <div className="row my-3">
-                                                <div className="col-3">
-                                                   
-                                                <BasicInfo profile_photo={profile_photo} />
-                                                </div>
-
-                                                <div className="my-auto mx-0 LightGrey col-6 Radius26 Font14">
-                                                <BasicInfo profile_photo={profile_photo} />
-                                                </div>
-                                            </div> */}
                                         </div>
                                         <div className="col-12 col-sm-5 col-md-12 col-lg-5 mx-auto">
                                             <p>Username: <span className="Purple">Your Username</span></p>
