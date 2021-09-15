@@ -28,15 +28,19 @@ const Social = () => {
     // eslint-disable-next-line
     const { Twitter, Facebook, Trading, Telegram, Instagram, Youtube, Linkedin, newLink, Links } = DetailData;
 
-    const onHandleChange = (event) => {
-        const { name, value } = event.target
-        setDetailData({
-            ...DetailData,
-            [name]: value
-        })
-    }
+    useEffect(() => {
+        $("#twitter").prop("disabled", true);
+        $("#instagram").prop("disabled", true);
+        $("#facebook").prop("disabled", true);
+        $("#youtube").prop("disabled", true);
+        $("#trading").prop("disabled", true);
+        $("#linkedin").prop("disabled", true);
+        $("#telegram").prop("disabled", true);
+        $("#custom").prop("disabled", true);
+    }, [])
+    
 
-    const handleChange = (event) => {
+    const onHandleChange = (event) => {
         const { name, value, type, checked } = event.target
         if (type === "checkbox") {
             setDetailData({
@@ -72,36 +76,32 @@ const Social = () => {
         $(e + 'Pen').removeClass('d-none');
         $(e).prop("disabled", true);
     }
-    useEffect(() => {
-        $("#twitter").prop("disabled", true);
-        $("#instagram").prop("disabled", true);
-        $("#facebook").prop("disabled", true);
-        $("#youtube").prop("disabled", true);
-        $("#trading").prop("disabled", true);
-        $("#linkedin").prop("disabled", true);
-        $("#telegram").prop("disabled", true);
-        $("#custom").prop("disabled", true);
-    }, [])
 
-    const AddNew = () => {
-        const random = Math.floor(100000 + Math.random() * 900000);
-        const newService = {
-            serviceid: random,
-            newLink: newLink,
+    const AddNew = async () => {
+            
+        if (newLink !== "") {
+            const random = Math.floor(100000 + Math.random() * 900000);
+         const newService =  await  {
+                socialLink_Id: random,
+                newLink: newLink,
+            }
+            Links.push(newService)
+            setDetailData({
+                ...DetailData,
+                newLink: "",
+            })
+            $("#"+random).prop("disabled", true);
         }
-        Links.push(newService)
-        setDetailData({
-            ...DetailData,
-            newLink: "",
-        })
     }
+    
+
     const onUpdateLink = (event) => {
         const id = event.target.id.replace("newLink", "");
         var array;
         // eslint-disable-next-line
         Links.map((service, index) => {
             // eslint-disable-next-line
-            if (service.serviceid == id) {
+            if (service.socialLink_Id == id) {
                 array = Links;
                 array[index].newLink = event.target.value
                 setDetailData({
@@ -110,7 +110,6 @@ const Social = () => {
                 })
             }
         })
-
     }
     const RenderMap = Links.map((servicemap) => {
         return (
@@ -119,23 +118,21 @@ const Social = () => {
                     <div className="row">
                         <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start">
                             <label className="my-auto">
-                                <input type="checkbox" onChange={handleChange} />
-                                <span className="py-auto">Custom Llnk</span>
+                                <input type="checkbox" onChange={onHandleChange} />
+                                <span className="py-auto Font1vh">Llnk</span>
                             </label>
                         </div>
                         <div className="col-12 col-md-12 col-lg-9 mx-auto  text-center text-sm-start text-md-center text-lg-start">
                             <div className="d-inline-flex LightRed Radius26 ">
                                 <input className="LightRed border-0 px-5 py-3 Radius26"
                                     placeholder="Paste Link "
-                                    // eslint-disable-next-line
-                                     id="custom"
-                                    name="newLink"
                                     value={servicemap.newLink}
                                     // eslint-disable-next-line
-                                    id={servicemap.serviceid + "NewLink"}
+                                    id={servicemap.socialLink_Id }
+                                    name="newLink"
                                     onChange={onUpdateLink}></input>
-                                <button className="btn" id="customPen" onClick={() => editLink("#custom")}> <span ><img src={edit} alt="" ></img></span> </button>
-                                <button className="btn d-none" id="customOk" onClick={() => cancelLink("#custom")} > <span >OK</span> </button>
+                                <button className="btn" id={servicemap.socialLink_Id+"Pen" }onClick={() => editLink("#"+servicemap.socialLink_Id)}> <span ><img src={edit} alt="" ></img></span> </button>
+                                <button className="btn d-none" id={servicemap.socialLink_Id+"Ok"} onClick={() => cancelLink("#"+servicemap.socialLink_Id)} > <span >OK</span> </button>
                             </div>
                         </div>
                     </div>
@@ -158,10 +155,10 @@ const Social = () => {
                                     <div className="row">
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto my-2">
                                             <div className="row">
-                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start">
-                                                    <label className="my-auto">
-                                                        <input type="checkbox" onChange={handleChange} />
-                                                        <span className="py-auto">Twitter</span>
+                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
+                                                    <label className=" d-inline-flex">
+                                                        <input type="checkbox" onChange={onHandleChange} />
+                                                        <span className="py-auto Font1vh">Twitter</span>
                                                     </label>
                                                 </div>
                                                 <div className=" col-12 col-md-12 col-lg-9 mx-auto  text-center text-sm-start text-md-center text-lg-start">
@@ -177,10 +174,10 @@ const Social = () => {
                                         </div>
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto my-2">
                                             <div className="row">
-                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start">
-                                                    <label className="my-auto">
-                                                        <input type="checkbox" onChange={handleChange} />
-                                                        <span className="py-auto">Instagram</span>
+                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
+                                                    <label className="my-auto d-inline-flex">
+                                                        <input type="checkbox" onChange={onHandleChange} />
+                                                        <span className="Font1vh">Instagrm</span>
                                                     </label>
                                                 </div>
                                                 <div className="col-12 col-md-12 col-lg-9 mx-auto  text-center text-sm-start text-md-center text-lg-start">
@@ -196,10 +193,10 @@ const Social = () => {
                                         </div>
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto my-2">
                                             <div className="row">
-                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start">
-                                                    <label className="my-auto">
-                                                        <input type="checkbox" onChange={handleChange} />
-                                                        <span className="py-auto">Facebook</span>
+                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
+                                                    <label className="my-auto d-inline-flex">
+                                                        <input type="checkbox" onChange={onHandleChange} />
+                                                        <span className="py-auto Font1vh">Facebook</span>
                                                     </label>
                                                 </div>
                                                 <div className="col-12 col-md-12 col-lg-9 mx-auto  text-center text-sm-start text-md-center text-lg-start">
@@ -215,10 +212,10 @@ const Social = () => {
                                         </div>
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto my-2">
                                             <div className="row">
-                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start">
-                                                    <label className="my-auto">
-                                                        <input type="checkbox" onChange={handleChange} />
-                                                        <span className="py-auto">Youtube</span>
+                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
+                                                    <label className="my-auto d-inline-flex">
+                                                        <input type="checkbox" onChange={onHandleChange} />
+                                                        <span className="py-auto Font1vh">Youtube</span>
                                                     </label>
                                                 </div>
                                                 <div className="col-12 col-md-12 col-lg-9 mx-auto  text-center text-sm-start text-md-center text-lg-start">
@@ -234,10 +231,10 @@ const Social = () => {
                                         </div>
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto my-2">
                                             <div className="row">
-                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start">
-                                                    <label className="my-auto">
-                                                        <input type="checkbox" onChange={handleChange} />
-                                                        <span className="py-auto">TradingView</span>
+                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
+                                                    <label className="my-auto d-inline-flex">
+                                                        <input type="checkbox" onChange={onHandleChange} />
+                                                        <span className="py-auto Font1vh">Trading</span>
                                                     </label>
                                                 </div>
                                                 <div className="col-12 col-md-12 col-lg-9 mx-auto  text-center text-sm-start text-md-center text-lg-start">
@@ -253,10 +250,10 @@ const Social = () => {
                                         </div>
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto my-2">
                                             <div className="row">
-                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start">
-                                                    <label className="my-auto">
-                                                        <input type="checkbox" onChange={handleChange} />
-                                                        <span className="py-auto">LinkedIn</span>
+                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
+                                                    <label className="my-auto d-inline-flex">
+                                                        <input type="checkbox" onChange={onHandleChange} />
+                                                        <span className="py-auto Font1vh">LinkedIn</span>
                                                     </label>
                                                 </div>
                                                 <div className="col-12 col-md-12 col-lg-9 mx-auto  text-center text-sm-start text-md-center text-lg-start">
@@ -272,10 +269,10 @@ const Social = () => {
                                         </div>
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto my-2">
                                             <div className="row">
-                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start">
-                                                    <label className="my-auto">
-                                                        <input type="checkbox" onChange={handleChange} />
-                                                        <span className="py-auto">Telegram</span>
+                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
+                                                    <label className="my-auto d-inline-flex">
+                                                        <input type="checkbox" onChange={onHandleChange} />
+                                                        <span className="py-auto Font1vh">Telegram</span>
                                                     </label>
                                                 </div>
                                                 <div className="col-12 col-md-12 col-lg-9 mx-auto  text-center text-sm-start text-md-center text-lg-start">
@@ -294,24 +291,25 @@ const Social = () => {
                                         {RenderMap}
                                         <div className="col-12 col-sm-6 col-md-12 col-lg-6 mx-auto my-2">
                                             <div className="row">
-                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start">
-                                                    <label className="my-auto" onClick={AddNew}>
+                                                <div className="col-12 col-md-12 col-lg-3 mx-auto text-center text-sm-start text-md-center text-lg-start my-auto">
+                                                    <label className="my-auto d-inline-flex" onClick={AddNew}>
                                                         <span><img src={plus} alt="" className="image"></img></span>
-                                                        <span className="py-auto ps-2">Add More</span>
+                                                        <span className="py-auto ps-2 Font1vh">Add More</span>
                                                     </label>
                                                 </div>
                                                 <div className="col-12 col-md-12 col-lg-9 mx-auto text-center text-sm-start text-md-center text-lg-start">
 
                                                     <div className="d-inline-flex LightRed Radius26 ">
                                                         <input className="LightRed border-0 px-5 py-3 Radius26" placeholder="Paste Link "
-                                                            name="newLink" value={newLink} onChange={onHandleChange}></input>
-                                                        <button className="btn"> <span ><img src={edit} alt="" ></img></span> </button>
+                                                            name="newLink" value={newLink} onChange={onHandleChange} id="custom"></input>
+                                                        <button className="btn" id="customPen" onClick={() => editLink("#custom")}> <span ><img src={edit} alt="" ></img></span> </button>
+                                                        <button className="btn d-none" id="customOk" onClick={() => cancelLink("#custom")} > <span >OK</span> </button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="d-block mx-auto pt-5">
                                         <button className="col-xl-2 d-block mx-auto border-0 gradient White p-3 Radius18">
                                             CONNECT SELLECTED

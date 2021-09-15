@@ -191,6 +191,12 @@ const Exchange = () => {
                                 </tr>
                             </td>
                         </div>
+                        <div className="d-block mx-auto pt-5">
+                            <button className="col-xl-2 d-block mx-auto border-0 DarkGrey White p-3 Radius18"
+                                onClick={ConnectService}>
+                                DISCONNECT
+                            </button>
+                        </div>
                     </div>
                 </div>
             </React.Fragment>

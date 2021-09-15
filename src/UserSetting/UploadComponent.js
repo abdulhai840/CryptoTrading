@@ -34,7 +34,7 @@ export default function UploadComponent(props) {
                     <Avatar size="small" src={img} className="d-block" />
                 </div>
 
-                <div className="my-auto col-7 d-block mx-auto float-end LightGrey Radius26">
+                <div className="my-auto ms-5 d-block mx-auto float-end LightGrey Radius26">
                     <div className="action">
                         <Upload className="mt-3 mb-3"
                             action="https://www.mocky.io/v2/5cc8019d300000980a055e76"

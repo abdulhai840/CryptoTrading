@@ -91,9 +91,9 @@ const Security = () => {
                                             </div>
                                         </div>
 
-                                        <div className="col-md-6 col-12">
-                                            <label className="text-center">2 FA:</label>
-                                            <div className="row my-3 col-11 mx-auto">
+                                        <div className="col-lg-6 col-md-12 col-12">
+                                            <div className="row my-3 col-10 mx-auto">
+                                            <label className="">2 FA:</label>
                                                 <div className="my-auto px-0 col-lg-12 col-md-12 col-12 Radius26 Font14">
                                                     <ul className="w-100 combineButton RadioToButton d-inline-flex px-0 my-1">
                                                         <li className="w-50">
@@ -120,10 +120,9 @@ const Security = () => {
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div className="d-block mx-auto pt-5">
-                                        <button className="col-xl-2 d-block mx-auto border-0 gradient White p-3 Radius18">
+                                        <button className="col-3 d-block mx-auto border-0 gradient White p-3 Radius18">
                                             SAVE
                                         </button>
                                     </div>
