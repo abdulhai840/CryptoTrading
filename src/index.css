@@ -200,3 +200,6 @@ img {
 .textArea{
   resize: none;
 }
+.canvasjs-chart-credit{
+  display: none ;
+}

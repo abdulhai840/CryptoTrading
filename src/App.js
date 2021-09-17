@@ -16,6 +16,7 @@ import Security from "./UserSetting/Security";
 import Social from "./UserSetting/Social";
 import Exchange from "./UserSetting/Exchange";
 import Graph from "./Graph/Graph";
+import LineChart from "./Graph/LineChart";
 
 // eslint-disable-next-line
 function NavLink({ children, to, activeOnlyWhenExact }) {
@@ -63,6 +64,9 @@ export default class App extends Component {
             </Route>
             <Route path="/graph" exact>
               <Graph />
+            </Route>
+            <Route path="/linechart" exact>
+              <LineChart />
             </Route>
           </Switch>
         </div>

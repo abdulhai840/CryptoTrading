@@ -31,10 +31,9 @@ export default function UploadComponent(props) {
         <React.Fragment>
             <div className="d-inline-flex">
                 <div className="">
-                    <Avatar size="small" src={img} className="d-block" />
+                    <Avatar size="small" src={img} className="d-block w-25" />
                 </div>
-
-                <div className="my-auto ms-5 d-block mx-auto float-end LightGrey Radius26">
+                <div className="my-auto  d-block mx-auto float-end LightGrey Radius26">
                     <div className="action">
                         <Upload className="mt-3 mb-3"
                             action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -46,8 +45,6 @@ export default function UploadComponent(props) {
                     </div>
                 </div>
             </div>
-
-
         </React.Fragment>
     )
 }

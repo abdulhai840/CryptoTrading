@@ -6,7 +6,7 @@ const Graph = () => {
         <React.Fragment>
             <div className="row">
                 <TradingViewWidget
-                    symbol="NASDAQ:AAPL"
+                    symbol="BTCUSD"
                     theme={Themes.DARK}
                     locale="en"
                     toolbar_bg= "#f1f3f6"
