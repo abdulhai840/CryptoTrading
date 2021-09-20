@@ -33,6 +33,7 @@ class LineChart extends React.Component {
                     { x: new Date(2017, 8), y: 32300 },
                     { x: new Date(2017, 9), y: 42000 },
                     { x: new Date(2017, 10), y: 37160 },
+                    { x: new Date(2017, 11), y: 38400 },
                     { x: new Date(2017, 11), y: 38400 }
                 ]
             }]
