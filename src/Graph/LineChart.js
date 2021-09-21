@@ -2,7 +2,19 @@ import React from 'react';
 import { CanvasJSChart } from 'canvasjs-react-charts'
 
 class LineChart extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            TimePeriod: ""
+        }
+        this.handleChange = this.handleChange.bind(this)
+    }
 
+
+    handleChange(event) {
+        const { name, value } = event.target
+        this.setState({ [name]: value })
+    }
 
     render() {
         const options = {
@@ -40,11 +52,57 @@ class LineChart extends React.Component {
         }
 
         return (
-            <div>
-                <CanvasJSChart options={options}
-                //  onRef={ref => this.chart = ref} 
-                />
-            </div>
+            <React.Fragment>
+                {/* <div className="d-flex justify-content-around">
+                    <p className="F1_2v mb-0" >Time Period:</p>
+                    <button className="btn p-0 F1_2v">1D</button>
+                    <button className="btn p-0 F1_2v">1W</button>
+                    <button className="btn p-0 F1_2v">1M</button>
+                    <button className="btn p-0 F1_2v">All Time</button>
+                </div> */}
+                <div className="col-12 text-center mt-3 px-0 d-inline-flex">
+                    <ul className="Tags RadioToButton  px-0">
+                        <p className="my-auto">Time Period:</p>
+                        <li className="mx-auto px-1 ">
+                            <input type="radio"
+                                id="1D"
+                                name="TimePeriod"
+                                value="1D"
+                                onClick={this.handleChange} />
+                            <label className="w-100 py-1 FS_12" htmlFor="1D">1D</label>
+                        </li>
+                        <li className="mx-auto px-1">
+                            <input type="radio"
+                                id="1W"
+                                name="TimePeriod"
+                                value="1W"
+                                onClick={this.handleChange} />
+                            <label className="w-100 py-1 FS_12" htmlFor="1W">1W</label>
+                        </li>
+                        <li className="mx-auto px-1">
+                            <input type="radio"
+                                id="1M"
+                                name="TimePeriod"
+                                value="1M"
+                                onClick={this.handleChange} />
+                            <label className="w-100 py-1 FS_12" htmlFor="1M">1M</label>
+                        </li>
+                        <li className="mx-auto px-1">
+                            <input type="radio"
+                                id="All"
+                                name="TimePeriod"
+                                value="All"
+                                onClick={this.handleChange} />
+                            <label className="w-100 py-1 FS_12" htmlFor="All">All</label>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <CanvasJSChart options={options}
+                    //  onRef={ref => this.chart = ref} 
+                    />
+                </div>
+            </React.Fragment>
         );
     }
 }

@@ -187,9 +187,9 @@ img {
 }
 
 .RadioToButton label {
-  border       : none;
+  border: none;
   border-radius: 50px;
-  width        : 100%;
+  width: 100%;
 }
 
 .RadioToButton input:checked+label,
@@ -202,4 +202,32 @@ img {
 }
 .canvasjs-chart-credit{
   display: none ;
+}
+/* Line Chart */
+.F1_2v {
+  font-size: .5vw;
+}
+.Tags label {
+  border: 1px solid rgb(122, 172, 179);
+  border-radius: 50px;
+  background-color: rgb(240, 242, 245);
+}
+.RadioToButton {
+  list-style-type: none;
+}
+
+.RadioToButton input {
+  display: none;
+}
+
+.RadioToButton label {
+  border       : none;
+  border-radius: 50px;
+  /* width: 100%; */
+}
+
+.RadioToButton input:checked+label,
+.Checked+label {
+  background-image: linear-gradient(to Right, #00DDC6, #00AEE1);
+  color: white;
 }
