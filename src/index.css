@@ -78,7 +78,6 @@ img {
   border: 0;
 }
 
-
 .customInput{
   background-color: #F2F2F2;
   border-radius   : 25px !important;
@@ -107,6 +106,12 @@ img {
 }
 .Grey {
   background-color: #EBEBEB;
+}
+.Red{
+  color: #BF272D;
+}
+.DarkGreen{
+  color: #39B34A;
 }
 .LightRed{
   background-color: #F0F0F0;
@@ -155,6 +160,9 @@ img {
 
 .Radius50 {
     border-radius: 50px;
+}
+.height4{
+  height: 4px;
 }
 .ant-upload-list-item{
     display: none !important;
@@ -207,10 +215,16 @@ img {
 .F1_2v {
   font-size: .5vw;
 }
+.Width25ch{
+  width: 50ch ;
+}
 .Tags label {
   border: 1px solid rgb(122, 172, 179);
   border-radius: 50px;
   background-color: rgb(240, 242, 245);
+}
+.time label{
+  background: none !important;
 }
 .RadioToButton {
   list-style-type: none;
@@ -225,9 +239,15 @@ img {
   border-radius: 50px;
   /* width: 100%; */
 }
-
 .RadioToButton input:checked+label,
 .Checked+label {
   background-image: linear-gradient(to Right, #00DDC6, #00AEE1);
   color: white;
+}
+
+@media screen and (min-width: 1220px) {
+  .chartjs-render-monitor{
+    height: 600px !important;
+    width: 100% !important;
+  }
 }
